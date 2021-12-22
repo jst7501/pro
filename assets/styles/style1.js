@@ -75,19 +75,22 @@ const styles = StyleSheet.create({
     // marginRight: "80%",
   },
   title: {
-    fontSize: 32,
+    fontSize: 22,
   },
   scho: {
-    fontSize: 15,
+    // marginTop: "1%",
+    marginVertical: '2%',
+    fontSize: 14,
   },
   psysical: {
-    fontSize: 15,
+    fontSize: 11,
+    marginTop: '3%',
   },
   score: {
-    fontSize: 32,
+    fontSize: 36,
   },
   day: {
-    fontSize: 15,
+    fontSize: 12,
   },
 });
 

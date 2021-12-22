@@ -11,7 +11,117 @@ import styles from '../assets/styles/style1';
 import { SvgXml } from 'react-native-svg';
 import Box from '../Components/Box';
 import { FlatList } from 'react-native-gesture-handler';
+function User({ user }) {
+  return (
+    <View
+      style={{
+        borderRadius: 5,
+        flexDirection: 'row',
+        backgroundColor: 'white',
+        padding: 12,
+        marginVertical: 5,
+      }}
+    >
+      <View style={styles.item}>
+        <Text style={styles.title}>{user.title}</Text>
+        <Text style={styles.scho}>{user.scho}</Text>
 
+        <Text style={styles.psysical}>{user.psysical}</Text>
+      </View>
+      <View style={styles.num}>
+        <Text style={styles.score}>
+          {(() => {
+            if (user.score >= 90)
+              return <Text style={{ color: '#FFD800' }}>{user.score}</Text>;
+            else return <Text>{user.score}</Text>;
+          })()}
+        </Text>
+        <Text style={styles.day}>{user.day}</Text>
+      </View>
+    </View>
+  );
+}
+
+const DATA = [
+  {
+    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+    title: '정해일',
+    scho: '중등부',
+    psysical: '골밑슛 89 / 레이업 64 / 자유투 77',
+    score: '99',
+    day: '12.08',
+  },
+  {
+    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
+    title: '정해일',
+    scho: '중등부',
+    psysical: '골밑슛 89 / 레이업 64 / 자유투 77',
+    score: '24',
+    day: '12.08',
+  },
+  {
+    id: '58694a0f-3da1-471f-bd96-145571e29d72',
+    title: '정해일',
+    scho: '중등부',
+    psysical: '골밑슛 89 / 레이업 64 / 자유투 77',
+    score: '34',
+    day: '12.08',
+  },
+  {
+    id: '5da1-471f-bd96-145571e29d72',
+    title: '정해일',
+    scho: '중등부',
+    psysical: '골밑슛 89 / 레이업 64 / 자유투 77',
+    score: '84',
+    day: '12.08',
+  },
+  {
+    id: '58694a0f-3da1-4145571e29d72',
+    title: '정해일',
+    scho: '중등부',
+    psysical: '골밑슛 89 / 레이업 64 / 자유투 77',
+    score: '84',
+    day: '12.08',
+  },
+  {
+    id: '58694da1-471f-bd96-145571e29d72',
+    title: '정해일',
+    scho: '중등부',
+    psysical: '골밑슛 89 / 레이업 64 / 자유투 77',
+    score: '84',
+    day: '12.08',
+  },
+];
+const Item = ({ title, scho, psysical, score, day }) => (
+  <View
+    style={{
+      flex: 1,
+      flexDirection: 'row',
+      backgroundColor: 'gray',
+      padding: 20,
+      marginVertical: 10,
+    }}
+  >
+    <View style={styles.item}>
+      <Text style={styles.title}>{title}</Text>
+      <Text style={styles.scho}>{scho}</Text>
+      <Text style={styles.psysical}>{psysical}</Text>
+    </View>
+    <View style={styles.num}>
+      <Text style={styles.score}>{score}</Text>
+      <Text style={styles.day}>{day}</Text>
+    </View>
+  </View>
+);
+const renderItem = ({ item }) => (
+  <Item
+    title={item.title}
+    scho={item.scho}
+    psysical={item.psysical}
+    score={item.score}
+    day={item.day}
+  />
+);
 function CchDetail({ route, navigation }) {
   const backSvg = `<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
   <rect width="40" height="40" rx="4" fill="white"/>
@@ -20,220 +130,136 @@ function CchDetail({ route, navigation }) {
   `;
   const BackBtn = () => <SvgXml xml={backSvg} />;
   const { stdName, shoot, free, layup, drib } = route.params;
-  const [state, setDATA] = useState({
-    data=[
-    {
-      id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-      title: '정해일',
-      scho: '중등부',
-      psysical: '골밑슛 89 / 레이업 64 / 자유투 77',
-      score: '99',
-      day: '12.08',
-    },
-    {
-      id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-      title: '정해일',
-      scho: '중등부',
-      psysical: '골밑슛 89 / 레이업 64 / 자유투 77',
-      score: '24',
-      day: '12.08',
-    },
-    {
-      id: '58694a0f-3da1-471f-bd96-145571e29d72',
-      title: '정해일',
-      scho: '중등부',
-      psysical: '골밑슛 89 / 레이업 64 / 자유투 77',
-      score: '34',
-      day: '12.08',
-    },
-    {
-      id: '5da1-471f-bd96-145571e29d72',
-      title: '정해일',
-      scho: '중등부',
-      psysical: '골밑슛 89 / 레이업 64 / 자유투 77',
-      score: '84',
-      day: '12.08',
-    },
-    {
-      id: '58694a0f-3da1-4145571e29d72',
-      title: '정해일',
-      scho: '중등부',
-      psysical: '골밑슛 89 / 레이업 64 / 자유투 77',
-      score: '84',
-      day: '12.08',
-    },
-    {
-      id: '58694da1-471f-bd96-145571e29d72',
-      title: '정해일',
-      scho: '중등부',
-      psysical: '골밑슛 89 / 레이업 64 / 자유투 77',
-      score: '84',
-      day: '12.08',
-  },
 
-  ]})
-  
-  const Item = ({ title, scho, psysical, score, day }) => (
-    <View
-      style={{
-        //flex:1,
-        flexDirection: 'row',
-        backgroundColor: 'gray',
-        padding: 20,
-        marginVertical: 10,
-        height: '3%',
-      }}
-    >
-      <View style={styles.item}>
-        <Text style={styles.title}>{title}</Text>
-        <Text style={styles.scho}>{scho}</Text>
-        <Text style={styles.psysical}>{psysical}</Text>
-      </View>
-      <View style={styles.num}>
-        <Text style={styles.score}>{score}</Text>
-        <Text style={styles.day}>{day}</Text>
-      </View>
-    </View>
-  );
-  const renderItem = ({ item }) => (
-    <Item
-      title={item.title}
-      scho={item.scho}
-      psysical={item.psysical}
-      score={item.score}
-      day={item.day}
-    />
-  );
-  const data1=DATA[1];
+  const data1 = DATA[1];
   return (
-    <View style={styles.container}>
-      <ScrollView>
-        <View style={[styles.header, { height: '8%' }]}>
-          <View style={{ position: 'absolute', left: 34 }}>
-            <TouchableOpacity onPress={() => navigation.goBack()}>
-              <BackBtn />
-            </TouchableOpacity>
+    <View style={styles.Container}>
+      <View style={[styles.header, { height: '10%' }]}>
+        <View style={{ position: 'absolute', left: 34 }}>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <BackBtn />
+          </TouchableOpacity>
+        </View>
+        <View>
+          <Text style={{ fontSize: 20 }}>{stdName}</Text>
+        </View>
+      </View>
+      <ScrollView style={{ flex: 9 }}>
+        <View
+          style={{
+            flex: 3,
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+            justifyContent: 'center',
+            paddingBottom: '5%',
+            marginVertical: 0,
+            //backgroundColor: 'black',
+          }}
+        >
+          <Image
+            style={{
+              width: '85%',
+              height: '100%',
+              //flex: 1,
+              borderRadius: 5,
+              backgroundColor: 'black',
+              //paddingBottom: '5%',
+            }}
+            source={require('../assets/cws.jpeg')}
+            resizeMode='contain'
+          />
+        </View>
+        <View
+          style={{
+            flex: 1,
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <View style={styles.fourbox}>
+            <Text style={styles.boxtext}>
+              <Text style={{ fontSize: 28, marginBottom: 6 }}>{shoot}</Text>
+              <Text style={{ fontSize: 6 }}>
+                {'\n'}
+                {'\n'}
+              </Text>
+              <Text style={{ fontSize: 12 }}>{'골밑슛'}</Text>
+            </Text>
           </View>
-          <View>
-            <Text style={{ fontSize: 20 }}>{stdName}</Text>
+          <View style={styles.fourbox}>
+            <Text style={styles.boxtext}>
+              <Text style={{ fontSize: 28 }}>{layup}</Text>
+              <Text style={{ fontSize: 6 }}>
+                {'\n'}
+                {'\n'}
+              </Text>
+              <Text style={{ fontSize: 12 }}>{'레이업'}</Text>
+            </Text>
+          </View>
+          <View style={styles.fourbox}>
+            <Text style={styles.boxtext}>
+              <Text style={{ fontSize: 28 }}>{free}</Text>
+              <Text style={{ fontSize: 6 }}>
+                {'\n'}
+                {'\n'}
+              </Text>
+              <Text style={{ fontSize: 12 }}>{'자유투'}</Text>
+            </Text>
+          </View>
+          <View style={styles.fourbox}>
+            <Text style={styles.boxtext}>
+              <Text style={{ fontSize: 28 }}>{drib}</Text>
+              <Text style={{ fontSize: 6 }}>
+                {'\n'}
+                {'\n'}
+              </Text>
+              <Text style={{ fontSize: 12 }}>{'드리블'}</Text>
+            </Text>
           </View>
         </View>
-        <View style={{ height: '92%' }}>
-          <View style={[styles.Contents, { flex: 1 }]}>
-            <View
-              style={{
-                height: '15%',
-                flexDirection: 'row',
-                flexWrap: 'wrap',
-                justifyContent: 'center',
-                paddingBottom: '5%',
-              }}
-            >
-              <Image
-                style={{
-                  width: '85%',
-                  height: '100%',
-                  borderRadius: 5,
-                  //backgroundColor: 'black',
-                  paddingBottom: '5%',
-                }}
-                source={require('../assets/cws.jpeg')}
-                resizeMode='contain'
-              />
-            </View>
-            <View
-              style={{
-                height: '9%',
-                flexDirection: 'row',
-                flexWrap: 'wrap',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
-            >
-              <View style={styles.fourbox}>
-                <Text style={styles.boxtext}>
-                  <Text style={{ fontSize: 28, marginBottom: 6 }}>{shoot}</Text>
-                  <Text style={{ fontSize: 6 }}>
-                    {'\n'}
-                    {'\n'}
-                  </Text>
-                  <Text style={{ fontSize: 12 }}>{'골밑슛'}</Text>
-                </Text>
-              </View>
-              <View style={styles.fourbox}>
-                <Text style={styles.boxtext}>
-                  <Text style={{ fontSize: 28 }}>{layup}</Text>
-                  <Text style={{ fontSize: 6 }}>
-                    {'\n'}
-                    {'\n'}
-                  </Text>
-                  <Text style={{ fontSize: 12 }}>{'레이업'}</Text>
-                </Text>
-              </View>
-              <View style={styles.fourbox}>
-                <Text style={styles.boxtext}>
-                  <Text style={{ fontSize: 28 }}>{free}</Text>
-                  <Text style={{ fontSize: 6 }}>
-                    {'\n'}
-                    {'\n'}
-                  </Text>
-                  <Text style={{ fontSize: 12 }}>{'자유투'}</Text>
-                </Text>
-              </View>
-              <View style={styles.fourbox}>
-                <Text style={styles.boxtext}>
-                  <Text style={{ fontSize: 28 }}>{drib}</Text>
-                  <Text style={{ fontSize: 6 }}>
-                    {'\n'}
-                    {'\n'}
-                  </Text>
-                  <Text style={{ fontSize: 12 }}>{'드리블'}</Text>
-                </Text>
-              </View>
-            </View>
-            <View
-              style={{
-                width: '100%',
-                height: '20%',
-                paddingHorizontal: '8%',
-              }}
-            >
-              <Text
-                style={{ fontSize: 16, paddingLeft: '2%', paddingBottom: '5%' }}
-              >
-                코칭 메모
-              </Text>
-              <View
-                style={{
-                  borderRadius: 5,
-                  backgroundColor: 'white',
-                }}
-              >
-                <Text style={{ flex: 1, fontSize: 14, padding: 20 }}>
-                  드리블이나 패스는 동나이대에 비해 준수한편이나 슈팅이나 돌파
-                  스킬은 향상시켜야 할 것으로 보임.ddddddddddddddddddddddddddd
-                  dddddddddddddddddddddddddddddddddddddddddddddd
-                </Text>
-                <Text
-                  style={{
-                    height: '20%',
-                    fontSize: 12,
-                    paddingLeft: '60%',
-                  }}
-                >
-                  2021.12.08 16:20
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={{ fontSize: 16, paddingLeft: '2%', paddingBottom: '8%' }}
-            >
-              최근 코칭기록
+        <View
+          style={{
+            width: '100%',
+            flex: 3,
+            paddingHorizontal: '8%',
+          }}
+        >
+          <Text
+            style={{ fontSize: 16, paddingLeft: '2%', paddingBottom: '5%' }}
+          >
+            코칭 메모
+          </Text>
+          <View
+            style={{
+              borderRadius: 5,
+              backgroundColor: 'white',
+            }}
+          >
+            <Text style={{ flex: 1, fontSize: 14, padding: 20 }}>
+              드리블이나 패스는 동나이대에 비해 준수한편이나 슈팅이나 돌파
+              스킬은 향상시켜야 할 것으로 보임.ddddddddddddddddd
             </Text>
-            {/* {[...Array(5)].map((x, index) => renderItem(DATA[x]))} */}
-            
-            <renderItem {}/>
+            <Text
+              style={{
+                height: '25%',
+                fontSize: 12,
+                paddingLeft: '60%',
+              }}
+            >
+              2021.12.08 16:20
+            </Text>
           </View>
+        </View>
+
+        <View style={[styles.content2, { flex: 2 }]}>
+          <Text style={{ fontSize: 16, marginLeft: '3%' }}>최근 코칭기록</Text>
+          <User user={DATA[0]} />
+          <User user={DATA[1]} />
+          <User user={DATA[2]} />
+          <User user={DATA[3]} />
+          <User user={DATA[4]} />
         </View>
       </ScrollView>
     </View>

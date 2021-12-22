@@ -67,56 +67,15 @@ function SchePg({ navigation }) {
   const [tabVal, setTab] = React.useState(false);
   return (
     <View style={styles.container}>
-      <ScrollView>
-        <View style={styles.header}>
-          <Text style={{ fontSize: 32, marginTop: '15%' }}>코칭기록</Text>
-        </View>
-        <View style={styles.MoHeader}>
-          <View style={styles.SysHeader}>
-            <View style={{ flexDirection: 'row' }}>
-              {tabVal == true ? (
-                <TouchableOpacity
-                  onPress={() => setTab(true)}
-                  style={{
-                    padding: '7%',
-                    marginTop: '25%',
-                    flex: 1,
-                    // height: 40,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    borderBottomWidth: 3,
-                    borderBottomColor: 'yellow',
-                  }}
-                >
-                  <Text style={{ fontSize: 15 }}>월간</Text>
-                </TouchableOpacity>
-              ) : (
-                <TouchableOpacity
-                  onPress={() => setTab(true)}
-                  style={{
-                    marginTop: '30%',
-                    flex: 1,
-                    height: 40,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                >
-                  <Image
-                    style={{
-                      width: 70,
-                      height: 70,
-                      // marginBottom: ,
-                      borderRadius: 35,
-                    }}
-                    source={require('../um.png')}
-                  />
-                </TouchableOpacity>
-              )}
-            </View>
-          </View>
-
-          <View style={styles.SysHeader1}>
-            {tabVal == false ? (
+      <View style={styles.header}>
+        <Text style={{ fontSize: 24, marginTop: '18%', fontWeight: 'bold' }}>
+          스케줄
+        </Text>
+      </View>
+      <View style={styles.MoHeader}>
+        <View style={styles.SysHeader}>
+          <View style={{ flexDirection: 'row' }}>
+            {tabVal == true ? (
               <TouchableOpacity
                 onPress={() => setTab(false)}
                 style={{
@@ -136,69 +95,109 @@ function SchePg({ navigation }) {
               <TouchableOpacity
                 onPress={() => setTab(false)}
                 style={{
-                  flex: 1 / 2,
-                  height: 40,
+                  padding: '7%',
+                  marginTop: '25%',
+                  flex: 1,
+                  // height: 40,
                   alignItems: 'center',
                   justifyContent: 'center',
+                  // borderBottomWidth: 3,
+                  // borderBottomColor: "yellow",
                 }}
               >
-                <Image
-                  style={{
-                    width: 70,
-                    height: 70,
-                    // marginBottom: ,
-                    borderRadius: 35,
-                  }}
-                  source={require('../um.png')}
-                />
+                <Text style={{ fontSize: 15 }}>월간</Text>
               </TouchableOpacity>
             )}
           </View>
         </View>
 
-        <View style={[styles.main, { flex: 6 }]}>
-          <View>
-            <Calendar
-              style={{ padding: '1%' }}
-              markingType={'custom'}
-              markedDates={{
-                '2021-12-17': {
-                  customStyles: {
-                    container: {
-                      backgroundColor: 'green',
-                    },
-                    text: {
-                      color: 'black',
-                      fontWeight: 'bold',
-                    },
-                  },
-                },
-                '2021-12-21': {
-                  customStyles: {
-                    container: {
-                      backgroundColor: 'white',
-                      elevation: 2,
-                    },
-                    text: {
-                      color: 'blue',
-                    },
-                  },
-                },
+        <View style={styles.SysHeader1}>
+          {tabVal == false ? (
+            <TouchableOpacity
+              onPress={() => setTab(false)}
+              style={{
+                padding: '7%',
+                marginTop: '25%',
+                flex: 1,
+                // height: 40,
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderBottomWidth: 3,
+                borderBottomColor: 'red',
               }}
-              theme={{
-                'stylesheet.calendar.header': {
-                  dayTextAtIndex0: {
-                    color: 'red',
-                  },
-                  dayTextAtIndex6: {
-                    color: 'blue',
-                  },
-                },
+            >
+              <Text style={{ fontSize: 15 }}>전체</Text>
+            </TouchableOpacity>
+          ) : (
+            <TouchableOpacity
+              onPress={() => setTab(false)}
+              style={{
+                padding: '7%',
+                marginTop: '25%',
+                flex: 1,
+                // height: 40,
+                alignItems: 'center',
+                justifyContent: 'center',
+                // borderBottomWidth: 3,
+                // borderBottomColor: "red",
               }}
-            />
-          </View>
+            >
+              <Text style={{ fontSize: 15 }}>전체</Text>
+            </TouchableOpacity>
+          )}
         </View>
-      </ScrollView>
+      </View>
+
+      <View style={styles.main}>
+        {(() => {
+          if (tabVal == true)
+            return (
+              <View>
+                <Calendar
+                  style={{ padding: '0%' }}
+                  markingType={'custom'}
+                  markedDates={{
+                    '2021-12-17': {
+                      customStyles: {
+                        container: {
+                          backgroundColor: 'green',
+                        },
+                        text: {
+                          color: 'black',
+                          fontWeight: 'bold',
+                        },
+                      },
+                    },
+                    '2021-12-21': {
+                      customStyles: {
+                        container: {
+                          backgroundColor: 'white',
+                          elevation: 2,
+                        },
+                        text: {
+                          color: 'blue',
+                        },
+                      },
+                    },
+                  }}
+                  theme={{
+                    'stylesheet.calendar.header': {
+                      dayTextAtIndex0: {
+                        color: 'red',
+                      },
+                      dayTextAtIndex6: {
+                        color: 'blue',
+                      },
+                    },
+                  }}
+                />
+                <View style={styles.main2}></View>
+              </View>
+            );
+          else return <Text>액션빔~</Text>;
+        })()}
+      </View>
+
       <View style={styles.footer}>
         <TouchableOpacity
           onPress={() => navigation.replace('Home')}
@@ -287,7 +286,6 @@ const styles = StyleSheet.create({
   main2: {
     flex: 1,
     backgroundColor: 'blue',
-    margin: '%',
   },
   // main: {
   //   // backgroundColor: "blue",
