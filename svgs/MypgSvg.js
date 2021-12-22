@@ -10,6 +10,6 @@ export default function Svg() {
     <path d="M8 3V5" stroke="#292929" stroke-linecap="round" stroke-linejoin="round"/>
     </g>
     </svg>`;
-  const MypgSvg = () => <SvgXml xml={MypgSvgXml} width="30" height="30" />;
+  const MypgSvg = () => <SvgXml xml={MypgSvgXml} width="18" height="18" />;
   return <MypgSvg />;
 }

@@ -8,6 +8,6 @@ export default function Svg() {
   <path d="M17 2L19 2" stroke="#333333" stroke-linecap="round" stroke-linejoin="round"/>
   </svg>
   `;
-  const ComSvg = () => <SvgXml xml={ComSvgXml} width="30" height="30" />;
+  const ComSvg = () => <SvgXml xml={ComSvgXml} width="18" height="18" />;
   return <ComSvg />;
 }

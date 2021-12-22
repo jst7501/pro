@@ -10,6 +10,6 @@ export default function Svg() {
   </svg>
   
   `;
-  const CoachSvg = () => <SvgXml xml={CoachSvgXml} width="30" height="30" />;
+  const CoachSvg = () => <SvgXml xml={CoachSvgXml} width="18" height="18" />;
   return <CoachSvg />;
 }

@@ -194,7 +194,50 @@ function SchePg({ navigation }) {
                 <View style={styles.main2}></View>
               </View>
             );
-          else return <Text>액션빔~</Text>;
+          else
+            return (
+              <View>
+                <Calendar
+                  style={{ padding: '0%' }}
+                  markingType={'custom'}
+                  markedDates={{
+                    '2021-12-12': {
+                      customStyles: {
+                        container: {
+                          backgroundColor: 'blue',
+                        },
+                        text: {
+                          color: 'black',
+                          fontWeight: 'bold',
+                        },
+                      },
+                    },
+                    '2021-12-21': {
+                      customStyles: {
+                        container: {
+                          backgroundColor: 'white',
+                          elevation: 2,
+                        },
+                        text: {
+                          color: 'blue',
+                        },
+                      },
+                    },
+                  }}
+                  theme={{
+                    'stylesheet.calendar.header': {
+                      dayTextAtIndex0: {
+                        color: 'red',
+                      },
+                      dayTextAtIndex6: {
+                        color: 'blue',
+                      },
+                    },
+                  }}
+                />
+                <View style={styles.main2}></View>
+              </View>
+            );
         })()}
       </View>
 
@@ -204,35 +247,35 @@ function SchePg({ navigation }) {
           style={{ alignItems: 'center' }}
         >
           <HomeSvg />
-          <Text>Home</Text>
+          <Text style={{ fontSize: 12, color: 'gray' }}>Home</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => navigation.replace('CoachPg')}
           style={{ alignItems: 'center' }}
         >
           <CoachSvg />
-          <Text>코칭기록</Text>
+          <Text style={{ fontSize: 12, color: 'gray' }}>코칭기록</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => navigation.replace('SchePg')}
+          onPress={() => navigation.navigate('SchePg')}
           style={{ alignItems: 'center' }}
         >
           <ScheSvg />
-          <Text>스케줄</Text>
+          <Text style={{ fontSize: 12 }}> 스케줄</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => navigation.replace('ComPg')}
           style={{ alignItems: 'center' }}
         >
           <ComSvg />
-          <Text>커뮤니티</Text>
+          <Text style={{ fontSize: 12, color: 'gray' }}>커뮤니티</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => navigation.replace('MyPg')}
           style={{ alignItems: 'center' }}
         >
           <MypgSvg />
-          <Text>마이페이지</Text>
+          <Text style={{ fontSize: 12, color: 'gray' }}>마이페이지</Text>
         </TouchableOpacity>
       </View>
     </View>

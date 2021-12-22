@@ -11,6 +11,6 @@ export default function Svg() {
   </g>
   </svg>
   `;
-  const ScheSvg = () => <SvgXml xml={ScheSvgXml} width="30" height="30" />;
+  const ScheSvg = () => <SvgXml xml={ScheSvgXml} width="18" height="18" />;
   return <ScheSvg />;
 }
