@@ -176,15 +176,7 @@ function Home({ navigation }) {
               justifyContent: "center",
             }}
           >
-            <Image
-              style={{
-                width: 70,
-                height: 70,
-                // marginBottom: ,
-                borderRadius: 35,
-              }}
-              source={require("./abv.jpg")}
-            />
+            <Text>지금이니</Text>
           </TouchableOpacity>
         )}
 
@@ -210,15 +202,7 @@ function Home({ navigation }) {
               justifyContent: "center",
             }}
           >
-            <Image
-              style={{
-                width: 70,
-                height: 70,
-                // marginBottom: ,
-                borderRadius: 35,
-              }}
-              source={require("./abv.jpg")}
-            />
+            <Text>지금이니</Text>
           </TouchableOpacity>
         )}
       </View>
