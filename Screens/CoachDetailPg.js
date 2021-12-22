@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from 'react';
 import {
   Image,
   View,
@@ -6,11 +6,11 @@ import {
   Button,
   TouchableOpacity,
   ScrollView,
-} from "react-native";
-import styles from "../assets/styles/style1";
-import { SvgXml } from "react-native-svg";
-import Box from "../Components/Box";
-import { FlatList } from "react-native-gesture-handler";
+} from 'react-native';
+import styles from '../assets/styles/style1';
+import { SvgXml } from 'react-native-svg';
+import Box from '../Components/Box';
+import { FlatList } from 'react-native-gesture-handler';
 
 function CchDetail({ route, navigation }) {
   const backSvg = `<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -20,64 +20,68 @@ function CchDetail({ route, navigation }) {
   `;
   const BackBtn = () => <SvgXml xml={backSvg} />;
   const { stdName, shoot, free, layup, drib } = route.params;
-  const DATA = [
+  const [state, setDATA] = useState({
+    data=[
     {
-      id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
-      title: "정해일",
-      scho: "중등부",
-      psysical: "골밑슛 89 / 레이업 64 / 자유투 77",
-      score: "99",
-      day: "12.08",
+      id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+      title: '정해일',
+      scho: '중등부',
+      psysical: '골밑슛 89 / 레이업 64 / 자유투 77',
+      score: '99',
+      day: '12.08',
     },
     {
-      id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
-      title: "정해일",
-      scho: "중등부",
-      psysical: "골밑슛 89 / 레이업 64 / 자유투 77",
-      score: "24",
-      day: "12.08",
+      id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
+      title: '정해일',
+      scho: '중등부',
+      psysical: '골밑슛 89 / 레이업 64 / 자유투 77',
+      score: '24',
+      day: '12.08',
     },
     {
-      id: "58694a0f-3da1-471f-bd96-145571e29d72",
-      title: "정해일",
-      scho: "중등부",
-      psysical: "골밑슛 89 / 레이업 64 / 자유투 77",
-      score: "34",
-      day: "12.08",
+      id: '58694a0f-3da1-471f-bd96-145571e29d72',
+      title: '정해일',
+      scho: '중등부',
+      psysical: '골밑슛 89 / 레이업 64 / 자유투 77',
+      score: '34',
+      day: '12.08',
     },
     {
-      id: "5da1-471f-bd96-145571e29d72",
-      title: "정해일",
-      scho: "중등부",
-      psysical: "골밑슛 89 / 레이업 64 / 자유투 77",
-      score: "84",
-      day: "12.08",
+      id: '5da1-471f-bd96-145571e29d72',
+      title: '정해일',
+      scho: '중등부',
+      psysical: '골밑슛 89 / 레이업 64 / 자유투 77',
+      score: '84',
+      day: '12.08',
     },
     {
-      id: "58694a0f-3da1-4145571e29d72",
-      title: "정해일",
-      scho: "중등부",
-      psysical: "골밑슛 89 / 레이업 64 / 자유투 77",
-      score: "84",
-      day: "12.08",
+      id: '58694a0f-3da1-4145571e29d72',
+      title: '정해일',
+      scho: '중등부',
+      psysical: '골밑슛 89 / 레이업 64 / 자유투 77',
+      score: '84',
+      day: '12.08',
     },
     {
-      id: "58694da1-471f-bd96-145571e29d72",
-      title: "정해일",
-      scho: "중등부",
-      psysical: "골밑슛 89 / 레이업 64 / 자유투 77",
-      score: "84",
-      day: "12.08",
-    },
-  ];
+      id: '58694da1-471f-bd96-145571e29d72',
+      title: '정해일',
+      scho: '중등부',
+      psysical: '골밑슛 89 / 레이업 64 / 자유투 77',
+      score: '84',
+      day: '12.08',
+  },
+
+  ]})
+  
   const Item = ({ title, scho, psysical, score, day }) => (
     <View
       style={{
-        flex: 1,
-        flexDirection: "row",
-        backgroundColor: "gray",
+        //flex:1,
+        flexDirection: 'row',
+        backgroundColor: 'gray',
         padding: 20,
         marginVertical: 10,
+        height: '3%',
       }}
     >
       <View style={styles.item}>
@@ -100,11 +104,12 @@ function CchDetail({ route, navigation }) {
       day={item.day}
     />
   );
+  const data1=DATA[1];
   return (
     <View style={styles.container}>
       <ScrollView>
-        <View style={[styles.header, { height: "8%" }]}>
-          <View style={{ position: "absolute", left: 34 }}>
+        <View style={[styles.header, { height: '8%' }]}>
+          <View style={{ position: 'absolute', left: 34 }}>
             <TouchableOpacity onPress={() => navigation.goBack()}>
               <BackBtn />
             </TouchableOpacity>
@@ -113,95 +118,95 @@ function CchDetail({ route, navigation }) {
             <Text style={{ fontSize: 20 }}>{stdName}</Text>
           </View>
         </View>
-        <View style={{ height: "92%" }}>
+        <View style={{ height: '92%' }}>
           <View style={[styles.Contents, { flex: 1 }]}>
             <View
               style={{
-                height: "15%",
-                flexDirection: "row",
-                flexWrap: "wrap",
-                justifyContent: "center",
-                paddingBottom: "5%",
+                height: '15%',
+                flexDirection: 'row',
+                flexWrap: 'wrap',
+                justifyContent: 'center',
+                paddingBottom: '5%',
               }}
             >
               <Image
                 style={{
-                  width: "85%",
-                  height: "100%",
+                  width: '85%',
+                  height: '100%',
                   borderRadius: 5,
                   //backgroundColor: 'black',
-                  paddingBottom: "5%",
+                  paddingBottom: '5%',
                 }}
-                source={require("../assets/cws.jpeg")}
-                resizeMode="contain"
+                source={require('../assets/cws.jpeg')}
+                resizeMode='contain'
               />
             </View>
             <View
               style={{
-                height: "9%",
-                flexDirection: "row",
-                flexWrap: "wrap",
-                justifyContent: "center",
-                alignItems: "center",
+                height: '9%',
+                flexDirection: 'row',
+                flexWrap: 'wrap',
+                justifyContent: 'center',
+                alignItems: 'center',
               }}
             >
               <View style={styles.fourbox}>
                 <Text style={styles.boxtext}>
                   <Text style={{ fontSize: 28, marginBottom: 6 }}>{shoot}</Text>
                   <Text style={{ fontSize: 6 }}>
-                    {"\n"}
-                    {"\n"}
+                    {'\n'}
+                    {'\n'}
                   </Text>
-                  <Text style={{ fontSize: 12 }}>{"골밑슛"}</Text>
+                  <Text style={{ fontSize: 12 }}>{'골밑슛'}</Text>
                 </Text>
               </View>
               <View style={styles.fourbox}>
                 <Text style={styles.boxtext}>
                   <Text style={{ fontSize: 28 }}>{layup}</Text>
                   <Text style={{ fontSize: 6 }}>
-                    {"\n"}
-                    {"\n"}
+                    {'\n'}
+                    {'\n'}
                   </Text>
-                  <Text style={{ fontSize: 12 }}>{"레이업"}</Text>
+                  <Text style={{ fontSize: 12 }}>{'레이업'}</Text>
                 </Text>
               </View>
               <View style={styles.fourbox}>
                 <Text style={styles.boxtext}>
                   <Text style={{ fontSize: 28 }}>{free}</Text>
                   <Text style={{ fontSize: 6 }}>
-                    {"\n"}
-                    {"\n"}
+                    {'\n'}
+                    {'\n'}
                   </Text>
-                  <Text style={{ fontSize: 12 }}>{"자유투"}</Text>
+                  <Text style={{ fontSize: 12 }}>{'자유투'}</Text>
                 </Text>
               </View>
               <View style={styles.fourbox}>
                 <Text style={styles.boxtext}>
                   <Text style={{ fontSize: 28 }}>{drib}</Text>
                   <Text style={{ fontSize: 6 }}>
-                    {"\n"}
-                    {"\n"}
+                    {'\n'}
+                    {'\n'}
                   </Text>
-                  <Text style={{ fontSize: 12 }}>{"드리블"}</Text>
+                  <Text style={{ fontSize: 12 }}>{'드리블'}</Text>
                 </Text>
               </View>
             </View>
             <View
               style={{
-                width: "100%",
-                height: "20%",
-                paddingHorizontal: "8%",
+                width: '100%',
+                height: '20%',
+                paddingHorizontal: '8%',
               }}
             >
               <Text
-                style={{ fontSize: 16, paddingLeft: "2%", paddingBottom: "5%" }}
+                style={{ fontSize: 16, paddingLeft: '2%', paddingBottom: '5%' }}
               >
                 코칭 메모
               </Text>
               <View
                 style={{
                   borderRadius: 5,
-                  backgroundColor: "white",
+                  backgroundColor: 'white',
                 }}
               >
                 <Text style={{ flex: 1, fontSize: 14, padding: 20 }}>
@@ -211,9 +216,9 @@ function CchDetail({ route, navigation }) {
                 </Text>
                 <Text
                   style={{
-                    height: "20%",
+                    height: '20%',
                     fontSize: 12,
-                    paddingLeft: "60%",
+                    paddingLeft: '60%',
                   }}
                 >
                   2021.12.08 16:20
@@ -221,18 +226,13 @@ function CchDetail({ route, navigation }) {
               </View>
             </View>
             <Text
-              style={{ fontSize: 16, paddingLeft: "2%", paddingBottom: "8%" }}
+              style={{ fontSize: 16, paddingLeft: '2%', paddingBottom: '8%' }}
             >
               최근 코칭기록
             </Text>
-            <FlatList
-              data={DATA}
-              renderItem={renderItem}
-              keyExtractor={(item) => item.id}
-              //onEndReached={() => navigation.navigate('CoachPg')}
-              //horizontal={true}
-              style={{ height: "15%" }}
-            />
+            {/* {[...Array(5)].map((x, index) => renderItem(DATA[x]))} */}
+            
+            <renderItem {}/>
           </View>
         </View>
       </ScrollView>

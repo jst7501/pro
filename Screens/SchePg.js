@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   Image,
   View,
@@ -7,96 +7,139 @@ import {
   TouchableOpacity,
   StyleSheet,
   FlatList,
-} from "react-native";
-import { Calendar, CalendarList, Agenda } from "react-native-calendars";
-import { LocaleConfig } from "react-native-calendars";
-import { SvgXml } from "react-native-svg";
-import HomeSvg from "../svgs/HomeSvg";
-import CoachSvg from "../svgs/CoachSvg";
-import ComSvg from "../svgs/ComSvg";
-import MypgSvg from "../svgs/MypgSvg";
-import ScheSvg from "../svgs/ScheSvgXmlBlack";
+  ScrollView,
+} from 'react-native';
+import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
+import { LocaleConfig } from 'react-native-calendars';
+import { SvgXml } from 'react-native-svg';
+import HomeSvg from '../svgs/HomeSvg';
+import CoachSvg from '../svgs/CoachSvg';
+import ComSvg from '../svgs/ComSvg';
+import MypgSvg from '../svgs/MypgSvg';
+import ScheSvg from '../svgs/ScheSvgXmlBlack';
 
-LocaleConfig.locales["fr"] = {
+LocaleConfig.locales['fr'] = {
   monthNames: [
-    "1월",
-    "2월",
-    "3월",
-    "4월",
-    "5월",
-    "6월",
-    "7월",
-    "8월",
-    "9월",
-    "10월",
-    "11월",
-    "12월",
+    '1월',
+    '2월',
+    '3월',
+    '4월',
+    '5월',
+    '6월',
+    '7월',
+    '8월',
+    '9월',
+    '10월',
+    '11월',
+    '12월',
   ],
   monthNamesShort: [
-    "Janv.",
-    "Févr.",
-    "Mars",
-    "Avril",
-    "Mai",
-    "Juin",
-    "Juil.",
-    "Août",
-    "Sept.",
-    "Oct.",
-    "Nov.",
-    "Déc.",
+    'Janv.',
+    'Févr.',
+    'Mars',
+    'Avril',
+    'Mai',
+    'Juin',
+    'Juil.',
+    'Août',
+    'Sept.',
+    'Oct.',
+    'Nov.',
+    'Déc.',
   ],
   dayNames: [
-    "일요일",
-    "월요일",
-    "화요일",
-    "수요일",
-    "목요일",
-    "금요일",
-    "토요일",
+    '일요일',
+    '월요일',
+    '화요일',
+    '수요일',
+    '목요일',
+    '금요일',
+    '토요일',
   ],
-  dayNamesShort: ["일", "월", "화", "수", "목", "금", "토"],
+  dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
   today: "Aujourd'hui",
 };
-LocaleConfig.defaultLocale = "fr";
-const vacation = { key: "vacation", color: "red", selectedDotColor: "blue" };
-const massage = { key: "massage", color: "blue", selectedDotColor: "blue" };
-const workout = { key: "workout", color: "green" };
+LocaleConfig.defaultLocale = 'fr';
+const vacation = { key: 'vacation', color: 'red', selectedDotColor: 'blue' };
+const massage = { key: 'massage', color: 'blue', selectedDotColor: 'blue' };
+const workout = { key: 'workout', color: 'green' };
 function SchePg({ navigation }) {
   const [tabVal, setTab] = React.useState(false);
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={{ fontSize: 32, marginTop: "15%" }}>스케쥴</Text>
-      </View>
-      <View style={styles.MoHeader}>
-        <View style={styles.SysHeader}>
-          <View style={{ flexDirection: "row" }}>
-            {tabVal == true ? (
+      <ScrollView>
+        <View style={styles.header}>
+          <Text style={{ fontSize: 32, marginTop: '15%' }}>코칭기록</Text>
+        </View>
+        <View style={styles.MoHeader}>
+          <View style={styles.SysHeader}>
+            <View style={{ flexDirection: 'row' }}>
+              {tabVal == true ? (
+                <TouchableOpacity
+                  onPress={() => setTab(true)}
+                  style={{
+                    padding: '7%',
+                    marginTop: '25%',
+                    flex: 1,
+                    // height: 40,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    borderBottomWidth: 3,
+                    borderBottomColor: 'yellow',
+                  }}
+                >
+                  <Text style={{ fontSize: 15 }}>월간</Text>
+                </TouchableOpacity>
+              ) : (
+                <TouchableOpacity
+                  onPress={() => setTab(true)}
+                  style={{
+                    marginTop: '30%',
+                    flex: 1,
+                    height: 40,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <Image
+                    style={{
+                      width: 70,
+                      height: 70,
+                      // marginBottom: ,
+                      borderRadius: 35,
+                    }}
+                    source={require('../um.png')}
+                  />
+                </TouchableOpacity>
+              )}
+            </View>
+          </View>
+
+          <View style={styles.SysHeader1}>
+            {tabVal == false ? (
               <TouchableOpacity
-                onPress={() => setTab(true)}
+                onPress={() => setTab(false)}
                 style={{
-                  padding: "7%",
-                  marginTop: "25%",
+                  padding: '7%',
+                  marginTop: '25%',
                   flex: 1,
                   // height: 40,
-                  alignItems: "center",
-                  justifyContent: "center",
+                  alignItems: 'center',
+                  justifyContent: 'center',
                   borderBottomWidth: 3,
-                  borderBottomColor: "yellow",
+                  borderBottomColor: 'yellow',
                 }}
               >
-                <Text style={{ fontSize: 15 }}>월간</Text>
+                <Text style={{ fontSize: 15 }}>전체</Text>
               </TouchableOpacity>
             ) : (
               <TouchableOpacity
-                onPress={() => setTab(true)}
+                onPress={() => setTab(false)}
                 style={{
-                  marginTop: "30%",
-                  flex: 1,
+                  flex: 1 / 2,
                   height: 40,
-                  alignItems: "center",
-                  justifyContent: "center",
+                  alignItems: 'center',
+                  justifyContent: 'center',
                 }}
               >
                 <Image
@@ -106,131 +149,88 @@ function SchePg({ navigation }) {
                     // marginBottom: ,
                     borderRadius: 35,
                   }}
-                  source={require("../um.png")}
+                  source={require('../um.png')}
                 />
               </TouchableOpacity>
             )}
           </View>
         </View>
 
-        <View style={styles.SysHeader1}>
-          {tabVal == false ? (
-            <TouchableOpacity
-              onPress={() => setTab(false)}
-              style={{
-                padding: "7%",
-                marginTop: "25%",
-                flex: 1,
-                // height: 40,
-                alignItems: "center",
-                justifyContent: "center",
-                borderBottomWidth: 3,
-                borderBottomColor: "yellow",
+        <View style={[styles.main, { flex: 6 }]}>
+          <View>
+            <Calendar
+              style={{ padding: '1%' }}
+              markingType={'custom'}
+              markedDates={{
+                '2021-12-17': {
+                  customStyles: {
+                    container: {
+                      backgroundColor: 'green',
+                    },
+                    text: {
+                      color: 'black',
+                      fontWeight: 'bold',
+                    },
+                  },
+                },
+                '2021-12-21': {
+                  customStyles: {
+                    container: {
+                      backgroundColor: 'white',
+                      elevation: 2,
+                    },
+                    text: {
+                      color: 'blue',
+                    },
+                  },
+                },
               }}
-            >
-              <Text style={{ fontSize: 15 }}>전체</Text>
-            </TouchableOpacity>
-          ) : (
-            <TouchableOpacity
-              onPress={() => setTab(false)}
-              style={{
-                flex: 1 / 2,
-                height: 40,
-                alignItems: "center",
-                justifyContent: "center",
+              theme={{
+                'stylesheet.calendar.header': {
+                  dayTextAtIndex0: {
+                    color: 'red',
+                  },
+                  dayTextAtIndex6: {
+                    color: 'blue',
+                  },
+                },
               }}
-            >
-              <Image
-                style={{
-                  width: 70,
-                  height: 70,
-                  // marginBottom: ,
-                  borderRadius: 35,
-                }}
-                source={require("../um.png")}
-              />
-            </TouchableOpacity>
-          )}
+            />
+          </View>
         </View>
-      </View>
-
-      <View style={styles.main}>
-        <View>
-          <Calendar
-            style={{ padding: "0%" }}
-            markingType={"custom"}
-            markedDates={{
-              "2021-12-17": {
-                customStyles: {
-                  container: {
-                    backgroundColor: "green",
-                  },
-                  text: {
-                    color: "black",
-                    fontWeight: "bold",
-                  },
-                },
-              },
-              "2021-12-21": {
-                customStyles: {
-                  container: {
-                    backgroundColor: "white",
-                    elevation: 2,
-                  },
-                  text: {
-                    color: "blue",
-                  },
-                },
-              },
-            }}
-            theme={{
-              "stylesheet.calendar.header": {
-                dayTextAtIndex0: {
-                  color: "red",
-                },
-                dayTextAtIndex6: {
-                  color: "blue",
-                },
-              },
-            }}
-          />
-        </View>
-
-        <View style={styles.main2}></View>
-      </View>
-
+      </ScrollView>
       <View style={styles.footer}>
         <TouchableOpacity
-          onPress={() => navigation.replace("Home")}
-          style={{ alignItems: "center" }}
+          onPress={() => navigation.replace('Home')}
+          style={{ alignItems: 'center' }}
         >
           <HomeSvg />
           <Text>Home</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => navigation.replace("CoachPg")}
-          style={{ alignItems: "center" }}
+          onPress={() => navigation.replace('CoachPg')}
+          style={{ alignItems: 'center' }}
         >
           <CoachSvg />
           <Text>코칭기록</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => navigation.replace("SchePg")}
-          style={{ alignItems: "center" }}
+          onPress={() => navigation.replace('SchePg')}
+          style={{ alignItems: 'center' }}
         >
           <ScheSvg />
           <Text>스케줄</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => navigation.replace("ComPg")}
-          style={{ alignItems: "center" }}
+          onPress={() => navigation.replace('ComPg')}
+          style={{ alignItems: 'center' }}
         >
           <ComSvg />
           <Text>커뮤니티</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => navigation.replace("MyPg")}
-          style={{ alignItems: "center" }}
+          onPress={() => navigation.replace('MyPg')}
+          style={{ alignItems: 'center' }}
         >
           <MypgSvg />
           <Text>마이페이지</Text>
@@ -247,47 +247,47 @@ const styles = StyleSheet.create({
   },
   header: {
     // padding: "10%",
-    backgroundColor: "white",
+    backgroundColor: 'white',
     flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-around",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
   },
   MoHeader: {
     flex: 1,
-    backgroundColor: "gray",
-    flexDirection: "row",
+    backgroundColor: 'gray',
+    flexDirection: 'row',
   },
   SysHeader: {
     // borderBottomColor: "green",
     // borderColor: "white",
 
-    backgroundColor: "white",
+    backgroundColor: 'white',
 
     // borderRadius: 5,
     flex: 1,
     // flexDirection: "row",
     // justifyContent: "space-around",
-    alignItems: "center",
+    alignItems: 'center',
   },
   SysHeader1: {
-    backgroundColor: "white",
+    backgroundColor: 'white',
     flex: 1,
     // flexDirection: "row",
     // justifyContent: "space-around",
     // alignItems: "stretch",
   },
   main: {
-    paddingTop: "2%",
-    paddingLeft: "2%",
-    paddingRight: "2%",
+    paddingTop: '2%',
+    paddingLeft: '2%',
+    paddingRight: '2%',
     // backgroundColor: "red",
     flex: 6,
   },
   main2: {
     flex: 1,
-    backgroundColor: "blue",
-    margin: "%",
+    backgroundColor: 'blue',
+    margin: '%',
   },
   // main: {
   //   // backgroundColor: "blue",
@@ -295,10 +295,10 @@ const styles = StyleSheet.create({
   // },
   footer: {
     flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-around",
-    alignItems: "center",
-    backgroundColor: "white",
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    backgroundColor: 'white',
   },
   item: {
     flex: 5 / 6,
