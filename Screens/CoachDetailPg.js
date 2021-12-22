@@ -158,9 +158,9 @@ function CchDetail({ route, navigation }) {
         >
           <Image
             style={{
-              width: '85%',
-              height: '100%',
-              //flex: 1,
+              // width: '85%',
+              // height: '100%',
+              flex: 1,
               borderRadius: 5,
               backgroundColor: 'black',
               //paddingBottom: '5%',
