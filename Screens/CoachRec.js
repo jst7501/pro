@@ -74,6 +74,72 @@ function CoachPg({ navigation }) {
         day: "12.08",
       },
     ],
+    dat: [
+      {
+        id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
+        title: "금새인",
+        scho: "중등부",
+        psysical: "골밑슛 89 / 레이업 64 / 자유투 77",
+        score: "84",
+        day: "12.08",
+      },
+      {
+        id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
+        title: "신재호",
+        scho: "중등부",
+        psysical: "골밑슛 89 / 레이업 64 / 자유투 77",
+        score: "77",
+        day: "12.08",
+      },
+      {
+        id: "58694a0f-3da1-471f-bd96-145571e29d72",
+        title: "금새인",
+        scho: "중등부",
+        psysical: "골밑슛 89 / 레이업 64 / 자유투 77",
+        score: "91",
+        day: "12.08",
+      },
+      {
+        id: "5da1-471f-bd96-145571e29d72",
+        title: "금새인",
+        scho: "중등부",
+        psysical: "골밑슛 89 / 레이업 64 / 자유투 77",
+        score: "84",
+        day: "12.08",
+      },
+      {
+        id: "58694a0f-3da1-4145571e29d72",
+        title: "신재호",
+        scho: "중등부",
+        psysical: "골밑슛 89 / 레이업 64 / 자유투 77",
+        score: "77",
+        day: "12.08",
+      },
+      {
+        id: "58694da1-471f-96-145571e29d72",
+        title: "금새인",
+        scho: "중등부",
+        psysical: "골밑슛 89 / 레이업 64 / 자유투 77",
+        score: 91,
+        day: "12.08",
+      },
+      {
+        id: "586971f-bd96-145571e29d72",
+        title: "금새인",
+        scho: "중등부",
+        psysical: "골밑슛 89 / 레이업 64 / 자유투 77",
+        score: 91,
+        day: "12.08",
+      },
+      {
+        id: "58694da1-471f-bd96-29d72",
+        title: "금새인",
+        scho: "중등부",
+        psysical: "골밑슛 89 / 레이업 64 / 자유투 77",
+        score: 91,
+        day: "12.08",
+      },
+    ],
   });
   // const _getData = () => {
   //   id: Math.random().toString(12).substring(0);
@@ -100,8 +166,8 @@ function CoachPg({ navigation }) {
         flex: 1,
         flexDirection: "row",
         backgroundColor: "white",
-        padding: 20,
-        marginVertical: 10,
+        padding: 14,
+        marginVertical: 5,
       }}
       onPress={() =>
         navigation.navigate("CchDetail", {
@@ -122,7 +188,7 @@ function CoachPg({ navigation }) {
         <Text style={styles.score}>
           {(() => {
             if (score >= 90)
-              return <Text style={{ color: "blue" }}>{score}</Text>;
+              return <Text style={{ color: "#FFD800" }}>{score}</Text>;
             else return <Text>{score}</Text>;
           })()}
         </Text>
@@ -144,7 +210,7 @@ function CoachPg({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={{ fontSize: 32, marginTop: "15%" }}>코칭기록</Text>
+        <Text style={{ fontSize: 20, marginTop: "15%" }}>코칭기록</Text>
       </View>
       <View style={styles.MoHeader}>
         <View style={styles.SysHeader}>
@@ -154,7 +220,7 @@ function CoachPg({ navigation }) {
                 onPress={() => setTab(true)}
                 style={{
                   padding: "10%",
-                  marginTop: "15%",
+                  marginTop: "19%",
                   flex: 1,
                   // height: 40,
                   alignItems: "center",
@@ -163,14 +229,14 @@ function CoachPg({ navigation }) {
                   borderBottomColor: "yellow",
                 }}
               >
-                <Text style={{ fontSize: 17 }}>수강생 기록</Text>
+                <Text style={{ fontSize: 16 }}>수강생 기록</Text>
               </TouchableOpacity>
             ) : (
               <TouchableOpacity
                 onPress={() => setTab(true)}
                 style={{
                   padding: "10%",
-                  marginTop: "15%",
+                  marginTop: "19%",
                   flex: 1,
                   // height: 40,
                   alignItems: "center",
@@ -179,7 +245,7 @@ function CoachPg({ navigation }) {
                   // borderBottomColor: "yellow",
                 }}
               >
-                <Text style={{ fontSize: 17 }}>수강생 기록</Text>
+                <Text style={{ fontSize: 16 }}>수강생 기록</Text>
               </TouchableOpacity>
             )}
           </View>
@@ -191,7 +257,7 @@ function CoachPg({ navigation }) {
               onPress={() => setTab(false)}
               style={{
                 padding: "10%",
-                marginTop: "16%",
+                marginTop: "19%",
                 flex: 1,
                 // height: 40,
                 alignItems: "center",
@@ -200,14 +266,14 @@ function CoachPg({ navigation }) {
                 borderBottomColor: "red",
               }}
             >
-              <Text style={{ fontSize: 18 }}>전체</Text>
+              <Text style={{ fontSize: 16 }}>전체</Text>
             </TouchableOpacity>
           ) : (
             <TouchableOpacity
               onPress={() => setTab(false)}
               style={{
                 padding: "10%",
-                marginTop: "15%",
+                marginTop: "19%",
                 flex: 1,
                 // height: 40,
                 alignItems: "center",
@@ -216,7 +282,7 @@ function CoachPg({ navigation }) {
                 // borderBottomColor: "red",
               }}
             >
-              <Text style={{ fontSize: 18 }}>전체</Text>
+              <Text style={{ fontSize: 16 }}>전체</Text>
             </TouchableOpacity>
           )}
         </View>
@@ -233,7 +299,15 @@ function CoachPg({ navigation }) {
                 keyExtractor={(item) => item.id}
               />
             );
-          else return <Text>액션빔~</Text>;
+          else
+            return (
+              <FlatList
+                // style={{ backgroundColor: "white" }}
+                data={state.dat}
+                renderItem={renderItem}
+                keyExtractor={(item) => item.id}
+              />
+            );
         })()}
       </View>
 
@@ -243,35 +317,35 @@ function CoachPg({ navigation }) {
           style={{ alignItems: "center" }}
         >
           <HomeSvg />
-          <Text>Home</Text>
+          <Text style={{ fontSize: 12, color: "gray" }}>Home</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => navigation.replace("CoachPg")}
           style={{ alignItems: "center" }}
         >
           <CoachSvg />
-          <Text>코칭기록</Text>
+          <Text style={{ fontSize: 12 }}>코칭기록</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => navigation.replace("SchePg")}
+          onPress={() => navigation.navigate("SchePg")}
           style={{ alignItems: "center" }}
         >
           <ScheSvg />
-          <Text>스케줄</Text>
+          <Text style={{ fontSize: 12, color: "gray" }}> 스케줄</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => navigation.replace("ComPg")}
           style={{ alignItems: "center" }}
         >
           <ComSvg />
-          <Text>커뮤니티</Text>
+          <Text style={{ fontSize: 12, color: "gray" }}>커뮤니티</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => navigation.replace("MyPg")}
           style={{ alignItems: "center" }}
         >
           <MypgSvg />
-          <Text>마이페이지</Text>
+          <Text style={{ fontSize: 12, color: "gray" }}>마이페이지</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -317,9 +391,9 @@ const styles = StyleSheet.create({
     // alignItems: "stretch",
   },
   main: {
-    paddingTop: "7%",
-    paddingLeft: "7%",
-    paddingRight: "7%",
+    paddingTop: "5%",
+    paddingLeft: "5%",
+    paddingRight: "5%",
     // backgroundColor: "red",
     flex: 6,
   },
@@ -328,7 +402,7 @@ const styles = StyleSheet.create({
   //   flex: 6,
   // },
   footer: {
-    flex: 1,
+    flex: 0.6,
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
@@ -336,26 +410,34 @@ const styles = StyleSheet.create({
   },
   item: {
     flex: 5 / 6,
-
     // marginHorizontal: 16,
   },
   num: {
     flex: 1 / 6,
+    marginTop: "1%",
     // marginRight: "80%",
   },
   title: {
-    fontSize: 30,
+    fontSize: 22,
+    fontWeight: "bold",
   },
   scho: {
-    fontSize: 15,
+    color: "black",
+    marginVertical: "2%",
+    fontSize: 14,
   },
   psysical: {
-    fontSize: 15,
+    color: "black",
+    fontSize: 11,
+    marginTop: "2%",
   },
   score: {
-    fontSize: 32,
+    fontSize: 36,
   },
   day: {
-    fontSize: 15,
+    marginLeft: "8%",
+    padding: "2%",
+    marginTop: "4%",
+    fontSize: 12,
   },
 });

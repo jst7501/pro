@@ -1,6 +1,6 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import React from "react";
+import { View, Text, StyleSheet } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const Box = (props) => {
   return (
@@ -27,36 +27,36 @@ const Box = (props) => {
 }
 const styles = StyleSheet.create({
   square: {
-    flex: 1 / 2,
-    height: 120,
-    alignItems: 'flex-start',
-    overflow: 'hidden',
-    borderRadius: 10,
+    flex: 1,
+    // marginHorizontal: 15,
+    // height: 120,
+    // alignItems: "flex-start",
+    // overflow: "hidden",
+    borderRadius: 5,
   },
   itemTop: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    flexWrap: 'wrap',
+    flexDirection: "row",
+    alignItems: "center",
+    flexWrap: "wrap",
   },
   itemNum: {
-    maxWidth: '50%',
-    paddingBottom: 10,
-    color: 'white',
+    // maxWidth: "50%",
+    paddingBottom: "10%",
+    color: "white",
     fontSize: 36,
-    fontWeight: '500',
+    fontWeight: "500",
   },
   item: {
     width: 150,
     height: 100,
-    padding: 15,
+    padding: "10%",
     borderRadius: 10,
-
     marginBottom: 20,
   },
   itemText: {
-    maxWidth: '80%',
+    maxWidth: "80%",
     fontSize: 12,
-    color: 'white',
+    color: "white",
   },
 });
 

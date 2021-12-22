@@ -35,8 +35,8 @@ function User({ user }) {
         borderRadius: 5,
         flexDirection: "row",
         backgroundColor: "white",
-        padding: 12,
-        marginVertical: 5,
+        padding: 14,
+        marginVertical: 6,
       }}
     >
       <View style={styles.item}>
@@ -62,26 +62,26 @@ function User({ user }) {
 const DATA = [
   {
     id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
-    title: "정해일",
+    title: "금새인",
     scho: "중등부",
     psysical: "골밑슛 89 / 레이업 64 / 자유투 77",
-    score: "99",
+    score: "84",
     day: "12.08",
   },
   {
     id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
-    title: "정해일",
+    title: "신재호",
     scho: "중등부",
     psysical: "골밑슛 89 / 레이업 64 / 자유투 77",
-    score: "24",
+    score: "77",
     day: "12.08",
   },
   {
     id: "58694a0f-3da1-471f-bd96-145571e29d72",
-    title: "정해일",
+    title: "금새인",
     scho: "중등부",
     psysical: "골밑슛 89 / 레이업 64 / 자유투 77",
-    score: "34",
+    score: "91",
     day: "12.08",
   },
   {
@@ -115,17 +115,17 @@ const Item = ({ title, scho, psysical, score, day }) => (
       flex: 1,
       flexDirection: "row",
       backgroundColor: "gray",
-      padding: 20,
+      padding: 22,
       marginVertical: 10,
     }}
   >
     <View style={styles.item}>
       <Text style={styles.title}>{title}</Text>
       <Text style={styles.scho}>{scho}</Text>
-      <Text style={styles.psysical}>{psysical}</Text>
+      <Text style={styles.score}>{score}</Text>
     </View>
     <View style={styles.num}>
-      <Text style={styles.score}>{score}</Text>
+      <Text style={styles.psysical}>{psysical}</Text>
       <Text style={styles.day}>{day}</Text>
     </View>
   </View>
@@ -146,117 +146,68 @@ function Home({ navigation }) {
     <View style={styles.Container}>
       <View style={styles.header}>
         <View style={styles.headerLeft}>
-          <Text style={{ fontSize: 30, fontWeight: "500" }}>
-            {/* {props.user.name} */}dummy
-            <Text style={{ fontSize: 24 }}>님</Text>
-          </Text>
-
+          <View>
+            <Text style={{ fontSize: 30, fontWeight: "500" }}>
+              {/* {props.user.name} */}심재혁
+              <Text style={{ fontSize: 24, fontWeight: "normal" }}>님</Text>
+            </Text>
+          </View>
           <Text style={{ fontSize: 24 }}>환영합니다.</Text>
         </View>
         <View style={styles.headerRight}>
           <TouchableOpacity style={styles.UserImage}>
             <Image
-              source={require("../assets/icon.png")}
-              style={{ height: 100, width: 100 }}
+              source={require("../assets/Image.png")}
+              style={{ height: 70, width: 70, borderRadius: 100 }}
             />
           </TouchableOpacity>
         </View>
       </View>
 
-      <View style={{ flexDirection: "row" }}>
-        {tabVal == true ? (
-          <TouchableOpacity
-            onPress={() => setTab(true)}
-            style={{
-              flex: 1 / 2,
-              height: 40,
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <Text>aOff</Text>
-          </TouchableOpacity>
-        ) : (
-          <TouchableOpacity
-            onPress={() => setTab(true)}
-            style={{
-              flex: 1 / 2,
-              height: 40,
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <Text>지금이니</Text>
-          </TouchableOpacity>
-        )}
-
-        {tabVal == false ? (
-          <TouchableOpacity
-            onPress={() => setTab(false)}
-            style={{
-              flex: 1 / 2,
-              height: 40,
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <Text>bOff</Text>
-          </TouchableOpacity>
-        ) : (
-          <TouchableOpacity
-            onPress={() => setTab(false)}
-            style={{
-              flex: 1 / 2,
-              height: 40,
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <Text>지금이니</Text>
-          </TouchableOpacity>
-        )}
+      <View style={styles.Contents}>
+        <ScrollView>
+          <View style={styles.Boxes}>
+            <Box
+              text={"주간\n수업 스케줄"}
+              num={12}
+              color={"#335AC8"}
+              ml={10}
+              mr={13}
+            ></Box>
+            <Box
+              text={"수강생\n현황"}
+              num={36}
+              color={"#5BAFD0"}
+              ml={5}
+              mr={10}
+            ></Box>
+          </View>
+          <View style={styles.Boxes}>
+            <Box
+              text={"수강생\n코칭 기록"}
+              num={18}
+              color={"#D86C35"}
+              ml={10}
+              mr={5}
+            ></Box>
+            <Box
+              text={"커뮤니티\n현황"}
+              num={36}
+              color={"#D05BAF"}
+              ml={10}
+              mr={10}
+            ></Box>
+          </View>
+          <View style={styles.content2}>
+            <Text style={{ fontSize: 16, marginLeft: "3%" }}>
+              최근 코칭기록
+            </Text>
+            <User user={DATA[0]} />
+            <User user={DATA[1]} />
+            <User user={DATA[2]} />
+          </View>
+        </ScrollView>
       </View>
-
-      <ScrollView style={styles.Contents}>
-        <View style={styles.Boxes}>
-          <Box
-            text={"주간\n수업 스케줄"}
-            num={1}
-            color={"#335AC8"}
-            ml={10}
-            mr={5}
-          ></Box>
-          <Box
-            text={"수강생\n현황"}
-            num={2}
-            color={"#5BAFD0"}
-            ml={5}
-            mr={10}
-          ></Box>
-        </View>
-        <View style={styles.Boxes}>
-          <Box
-            text={"수강생\n코칭 기록"}
-            num={3}
-            color={"#D86C35"}
-            ml={10}
-            mr={5}
-          ></Box>
-          <Box
-            text={"커뮤니티\n현황"}
-            num={4}
-            color={"#D05BAF"}
-            ml={5}
-            mr={10}
-          ></Box>
-        </View>
-        <View style={styles.content2}>
-          <Text style={{ fontSize: 16, marginLeft: "3%" }}>최근 코칭기록</Text>
-          <User user={DATA[0]} />
-          <User user={DATA[1]} />
-          <User user={DATA[2]} />
-        </View>
-      </ScrollView>
 
       <View style={styles.footer}>
         <TouchableOpacity
@@ -264,35 +215,35 @@ function Home({ navigation }) {
           style={{ alignItems: "center" }}
         >
           <HomeSvg />
-          <Text>Home</Text>
+          <Text style={{ fontSize: 12 }}>Home</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => navigation.replace("CoachPg")}
           style={{ alignItems: "center" }}
         >
           <CoachSvg />
-          <Text>코칭기록</Text>
+          <Text style={{ fontSize: 12, color: "gray" }}>코칭기록</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => navigation.navigate("SchePg")}
           style={{ alignItems: "center" }}
         >
           <ScheSvg />
-          <Text>스케줄</Text>
+          <Text style={{ fontSize: 12, color: "gray" }}> 스케줄</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => navigation.replace("ComPg")}
           style={{ alignItems: "center" }}
         >
           <ComSvg />
-          <Text>커뮤니티</Text>
+          <Text style={{ fontSize: 12, color: "gray" }}>커뮤니티</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => navigation.replace("MyPg")}
           style={{ alignItems: "center" }}
         >
           <MypgSvg />
-          <Text>마이페이지</Text>
+          <Text style={{ fontSize: 12, color: "gray" }}>마이페이지</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -312,7 +263,7 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: "row",
     marginTop: getStatusBarHeight(),
-    height: 150,
+    flex: 1,
     alignItems: "center",
     justifyContent: "space-around",
   },
@@ -328,15 +279,17 @@ const styles = StyleSheet.create({
     left: "70%",
     borderRightWidth: 20,
   },
-  Contents: {},
+  Contents: { flex: 5 },
   Boxes: {
-    flexWrap: "wrap",
-    marginBottom: 10,
+    // flexWrap: "wrap",
+    // marginBottom: 10,
     flexDirection: "row",
-    justifyContent: "space-between",
-    overflow: "visible",
-    alignItems: "flex-start",
-    width: "100%",
+    marginVertical: "2%",
+
+    // justifyContent: "space-between",
+    // overflow: "visible",
+    // alignItems: "flex-start",
+    // width: "100%",
   },
   content2: { paddingHorizontal: 15, marginTop: 20, marginHorizontal: 15 },
   item: {
@@ -349,7 +302,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   footer: {
-    height: 80,
+    flex: 0.6,
     justifyContent: "space-around",
     alignItems: "center",
     backgroundColor: "white",
@@ -361,24 +314,30 @@ const styles = StyleSheet.create({
   },
   num: {
     flex: 1 / 6,
+    marginTop: "1%",
     // marginRight: "80%",
   },
   title: {
     fontSize: 22,
+    fontWeight: "bold",
   },
   scho: {
-    // marginTop: "1%",
+    color: "black",
     marginVertical: "2%",
     fontSize: 14,
   },
   psysical: {
+    color: "black",
     fontSize: 11,
-    marginTop: "3%",
+    marginTop: "2%",
   },
   score: {
     fontSize: 36,
   },
   day: {
+    marginLeft: "8%",
+    padding: "2%",
+    marginTop: "4%",
     fontSize: 12,
   },
 });

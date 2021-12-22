@@ -8,6 +8,6 @@ export default function Svg() {
   </g>
   </svg>
   `;
-  const HomeSvg = () => <SvgXml xml={HomeSvgXml} width="30" height="30" />;
+  const HomeSvg = () => <SvgXml xml={HomeSvgXml} width="18" height="18" />;
   return <HomeSvg />;
 }
