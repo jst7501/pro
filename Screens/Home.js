@@ -8,6 +8,7 @@ import {
   FlatList,
   StyleSheet,
   ScrollView,
+  ListViewBase,
 } from "react-native";
 import { getStatusBarHeight } from "react-native-status-bar-height";
 import { SvgUri } from "react-native-svg";
@@ -20,6 +21,37 @@ import Box from "../Components/Box";
 import { useMutation } from "@apollo/client";
 // graphQl
 import { TRADE } from "../Query";
+
+function User({ user }) {
+  return (
+    <View
+      style={{
+        flex: 1,
+        flexDirection: "row",
+        backgroundColor: "yellow",
+        padding: 20,
+        marginVertical: 10,
+      }}
+    >
+      <View style={styles.item}>
+        <Text style={styles.title}>{user.title}</Text>
+        <Text style={styles.scho}>{user.scho}</Text>
+
+        <Text style={styles.psysical}>{user.psysical}</Text>
+      </View>
+      <View style={styles.num}>
+        <Text style={styles.score}>
+          {(() => {
+            if (user.score >= 90)
+              return <Text style={{ color: "blue" }}>{user.score}</Text>;
+            else return <Text>{user.score}</Text>;
+          })()}
+        </Text>
+        <Text style={styles.day}>{user.day}</Text>
+      </View>
+    </View>
+  );
+}
 
 const DATA = [
   {
@@ -242,13 +274,9 @@ function Home({ navigation }) {
         </View>
         <View style={styles.content2}>
           <Text style={{ fontSize: 16 }}>최근 코칭기록</Text>
-          <FlatList
-            data={DATA}
-            renderItem={renderItem}
-            keyExtractor={(item) => item.id}
-            // onEndReached={() => navigation.navigate('CoachRec')}
-            //horizontal={true}
-          />
+          <User user={DATA[0]} />
+          <User user={DATA[1]} />
+          <User user={DATA[2]} />
         </View>
       </ScrollView>
 

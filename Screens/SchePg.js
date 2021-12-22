@@ -67,7 +67,7 @@ function SchePg({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={{ fontSize: 32, marginTop: "15%" }}>코칭기록</Text>
+        <Text style={{ fontSize: 32, marginTop: "15%" }}>스케쥴</Text>
       </View>
       <View style={styles.MoHeader}>
         <View style={styles.SysHeader}>
@@ -157,7 +157,7 @@ function SchePg({ navigation }) {
       <View style={styles.main}>
         <View>
           <Calendar
-            style={{ padding: "1%" }}
+            style={{ padding: "0%" }}
             markingType={"custom"}
             markedDates={{
               "2021-12-17": {
@@ -195,6 +195,8 @@ function SchePg({ navigation }) {
             }}
           />
         </View>
+
+        <View style={styles.main2}></View>
       </View>
 
       <View style={styles.footer}>
@@ -281,6 +283,11 @@ const styles = StyleSheet.create({
     paddingRight: "2%",
     // backgroundColor: "red",
     flex: 6,
+  },
+  main2: {
+    flex: 1,
+    backgroundColor: "blue",
+    margin: "%",
   },
   // main: {
   //   // backgroundColor: "blue",
