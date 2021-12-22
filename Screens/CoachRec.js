@@ -154,7 +154,7 @@ function CoachPg({ navigation }) {
                 onPress={() => setTab(true)}
                 style={{
                   padding: "10%",
-                  marginTop: "16%",
+                  marginTop: "15%",
                   flex: 1,
                   // height: 40,
                   alignItems: "center",
@@ -169,22 +169,17 @@ function CoachPg({ navigation }) {
               <TouchableOpacity
                 onPress={() => setTab(true)}
                 style={{
-                  marginTop: "30%",
+                  padding: "10%",
+                  marginTop: "15%",
                   flex: 1,
-                  height: 40,
+                  // height: 40,
                   alignItems: "center",
                   justifyContent: "center",
+                  // borderBottomWidth: 3,
+                  // borderBottomColor: "yellow",
                 }}
               >
-                <Image
-                  style={{
-                    width: 70,
-                    height: 70,
-                    // marginBottom: ,
-                    borderRadius: 35,
-                  }}
-                  source={require("../um.png")}
-                />
+                <Text style={{ fontSize: 17 }}>수강생 기록</Text>
               </TouchableOpacity>
             )}
           </View>
@@ -211,33 +206,35 @@ function CoachPg({ navigation }) {
             <TouchableOpacity
               onPress={() => setTab(false)}
               style={{
-                flex: 1 / 2,
-                height: 40,
+                padding: "10%",
+                marginTop: "15%",
+                flex: 1,
+                // height: 40,
                 alignItems: "center",
                 justifyContent: "center",
+                // borderBottomWidth: 3,
+                // borderBottomColor: "red",
               }}
             >
-              <Image
-                style={{
-                  width: 70,
-                  height: 70,
-                  // marginBottom: ,
-                  borderRadius: 35,
-                }}
-                source={require("../um.png")}
-              />
+              <Text style={{ fontSize: 18 }}>전체</Text>
             </TouchableOpacity>
           )}
         </View>
       </View>
 
       <View style={styles.main}>
-        <FlatList
-          // style={{ backgroundColor: "white" }}
-          data={state.data}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.id}
-        />
+        {(() => {
+          if (tabVal == true)
+            return (
+              <FlatList
+                // style={{ backgroundColor: "white" }}
+                data={state.data}
+                renderItem={renderItem}
+                keyExtractor={(item) => item.id}
+              />
+            );
+          else return <Text>액션빔~</Text>;
+        })()}
       </View>
 
       <View style={styles.footer}>

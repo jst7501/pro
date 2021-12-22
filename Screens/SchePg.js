@@ -67,7 +67,9 @@ function SchePg({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={{ fontSize: 32, marginTop: "15%" }}>스케쥴</Text>
+        <Text style={{ fontSize: 24, marginTop: "18%", fontWeight: "bold" }}>
+          스케줄
+        </Text>
       </View>
       <View style={styles.MoHeader}>
         <View style={styles.SysHeader}>
@@ -92,22 +94,17 @@ function SchePg({ navigation }) {
               <TouchableOpacity
                 onPress={() => setTab(true)}
                 style={{
-                  marginTop: "30%",
+                  padding: "7%",
+                  marginTop: "25%",
                   flex: 1,
-                  height: 40,
+                  // height: 40,
                   alignItems: "center",
                   justifyContent: "center",
+                  // borderBottomWidth: 3,
+                  // borderBottomColor: "yellow",
                 }}
               >
-                <Image
-                  style={{
-                    width: 70,
-                    height: 70,
-                    // marginBottom: ,
-                    borderRadius: 35,
-                  }}
-                  source={require("../um.png")}
-                />
+                <Text style={{ fontSize: 15 }}>월간</Text>
               </TouchableOpacity>
             )}
           </View>
@@ -125,7 +122,7 @@ function SchePg({ navigation }) {
                 alignItems: "center",
                 justifyContent: "center",
                 borderBottomWidth: 3,
-                borderBottomColor: "yellow",
+                borderBottomColor: "red",
               }}
             >
               <Text style={{ fontSize: 15 }}>전체</Text>
@@ -134,69 +131,70 @@ function SchePg({ navigation }) {
             <TouchableOpacity
               onPress={() => setTab(false)}
               style={{
-                flex: 1 / 2,
-                height: 40,
+                padding: "7%",
+                marginTop: "25%",
+                flex: 1,
+                // height: 40,
                 alignItems: "center",
                 justifyContent: "center",
+                // borderBottomWidth: 3,
+                // borderBottomColor: "red",
               }}
             >
-              <Image
-                style={{
-                  width: 70,
-                  height: 70,
-                  // marginBottom: ,
-                  borderRadius: 35,
-                }}
-                source={require("../um.png")}
-              />
+              <Text style={{ fontSize: 15 }}>전체</Text>
             </TouchableOpacity>
           )}
         </View>
       </View>
 
       <View style={styles.main}>
-        <View>
-          <Calendar
-            style={{ padding: "0%" }}
-            markingType={"custom"}
-            markedDates={{
-              "2021-12-17": {
-                customStyles: {
-                  container: {
-                    backgroundColor: "green",
-                  },
-                  text: {
-                    color: "black",
-                    fontWeight: "bold",
-                  },
-                },
-              },
-              "2021-12-21": {
-                customStyles: {
-                  container: {
-                    backgroundColor: "white",
-                    elevation: 2,
-                  },
-                  text: {
-                    color: "blue",
-                  },
-                },
-              },
-            }}
-            theme={{
-              "stylesheet.calendar.header": {
-                dayTextAtIndex0: {
-                  color: "red",
-                },
-                dayTextAtIndex6: {
-                  color: "blue",
-                },
-              },
-            }}
-          />
-        </View>
-
-        <View style={styles.main2}></View>
+        {(() => {
+          if (tabVal == true)
+            return (
+              <View>
+                <Calendar
+                  style={{ padding: "0%" }}
+                  markingType={"custom"}
+                  markedDates={{
+                    "2021-12-17": {
+                      customStyles: {
+                        container: {
+                          backgroundColor: "green",
+                        },
+                        text: {
+                          color: "black",
+                          fontWeight: "bold",
+                        },
+                      },
+                    },
+                    "2021-12-21": {
+                      customStyles: {
+                        container: {
+                          backgroundColor: "white",
+                          elevation: 2,
+                        },
+                        text: {
+                          color: "blue",
+                        },
+                      },
+                    },
+                  }}
+                  theme={{
+                    "stylesheet.calendar.header": {
+                      dayTextAtIndex0: {
+                        color: "red",
+                      },
+                      dayTextAtIndex6: {
+                        color: "blue",
+                      },
+                    },
+                  }}
+                />
+                <View style={styles.main2}></View>
+              </View>
+            );
+          else return <Text>액션빔~</Text>;
+        })()}
       </View>
 
       <View style={styles.footer}>
@@ -287,7 +285,6 @@ const styles = StyleSheet.create({
   main2: {
     flex: 1,
     backgroundColor: "blue",
-    margin: "%",
   },
   // main: {
   //   // backgroundColor: "blue",
